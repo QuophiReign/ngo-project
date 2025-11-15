@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Health Factor Foundation - Donor Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/Health Factor LOGO.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <header class="bg-white shadow fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded flex items-center justify-center text-white font-bold"><img
+                            src="/images/Health Factor LOGO.png" alt="Health Factor Foundation"></div>
+                    <div>
+                        <h1 class="text-lg font-semibold">The Health Factor Foundation</h1>
+                        <p class="text-xs text-gray-500">Bringing Health and Hope to Every Community</p>
+                    </div>
+                </div>
+
+                <nav id="navbar" class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+
+                    <a href="/index.html" class="hover:text-red-600">Home</a>
+                </nav>
+
+
+                <button id="menu-btn" class="md:hidden p-2 rounded bg-gray-100">☰</button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+
+            <nav class="flex flex-col p-4 space-y-2 text-sm">
+                <a href="/index.html" class="hover:text-red-600">Home</a>
+
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="pt-24 pb-12 bg-red-50 ">
+        <div class="max-w-3xl mx-auto px-4 text-center mt-4">
+            <h2 class="text-3xl font-extrabold mb-4 text-gray-800">Become a Donor</h2>
+            <p class="text-gray-600 mb-8 font-semibold">Join us in making a difference! Your generous donation helps us
+                provide essential health services and support to communities in need. Together, we can create a
+                healthier future for all.</p>
+        </div>
+    </section>
+
+    <main class="min-h-screen flex items-center justify-center p-6 -mt-20">
+        <form  id="contactForm" action="https://api.web3forms.com/submit" method="POST"
+            class="form-card w-full bg-white rounded-2xl shadow-lg p-8 grid gap-6 grid-cols-1 md:grid-cols-2"
+            novalidate>
+
+
+            <!-- REQUIRED Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="bac4b01c-0f85-4e78-bb8a-ab816f888eb0">
+        
+            <!-- Optional Subject -->
+            <input type="hidden" name="subject" value="New Contact Message">
+
+            <!-- Header / Brand -->
+            <div class="md:col-span-2 flex items-center gap-4">
+                <div
+                    class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-white text-xl font-bold">
+                    <img src="/images/Health Factor LOGO.png" alt="">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-semibold">Become a Donor</h1>
+                    <p class="text-sm text-gray-500">Thanks — your support makes our work possible. Please provide the
+                        details below.</p>
+                </div>
+            </div>
+
+
+            <!-- Personal Information -->
+            <fieldset class="space-y-3 p-4 border rounded-lg" aria-labelledby="personalInfoLabel">
+                <legend id="personalInfoLabel" class="text-sm font-medium">Personal information</legend>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <label class="block">
+                        <span class="text-sm">Full name <span class="text-rose-600">*</span></span>
+                        <input required name="fullName" aria-required="true" type="text" placeholder="Jane Doe"
+                            class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm focus:ring-2 focus:ring-emerald-300"
+                            required />
+                    </label>
+
+
+                    <label class="block">
+                        <span class="text-sm">Date of birth</span>
+                        <input name="dob" type="date" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm" />
+                    </label>
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <label class="block">
+                        <span class="text-sm">Gender</span>
+                        <select name="gender" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm">
+                            <option value="">Prefer not to say</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Non-binary</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+
+
+                    <label class="block md:col-span-2">
+                        <span class="text-sm">Nationality</span>
+                        <input name="nationality" type="text" placeholder="Country"
+                            class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm" />
+                    </label>
+                </div>
+            </fieldset>
+
+
+            <!-- Contact Information -->
+            <fieldset class="space-y-3 p-4 border rounded-lg" aria-labelledby="contactInfoLabel">
+                <legend id="contactInfoLabel" class="text-sm font-medium">Contact information</legend>
+
+
+                <label class="block md:col-span-2">
+                    <span class="text-sm">Email <span class="text-rose-600">*</span></span>
+                    <input required name="email" type="email" placeholder="you@example.org"
+                        class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm" />
+                </label>
+
+
+                <label class="block md:col-span-2">
+                    <span class="text-sm">Phone number</span>
+                    <input name="phone" type="tel" placeholder="+233 24 123 4567"
+                        class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm" />
+                </label>
+
+
+            </fieldset>
+
+            <fieldset class="space-y-3 p-4 border rounded-lg md:col-span-2" aria-labelledby="donationLabel">
+                <legend id="donationLabel" class="text-sm font-medium">Donation preferences</legend>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
+                    <label class="block md:col-span-2">
+                        <span class="text-sm">Donation amount <span class="text-rose-600">*</span></span>
+                        <div class="mt-1 flex gap-2">
+                            <input required name="amount" id="amountInput" inputmode="numeric" type="number" min="1"
+                                placeholder="e.g. 50" class="w-full rounded-lg border-gray-200 shadow-sm" />
+
+                        </div>
+                    </label>
+
+
+                    <label class="block">
+                        <span class="text-sm">Donation type</span>
+                        <select name="donationType" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm">
+                            <option>One-time</option>
+                            <option>Monthly</option>
+                            <option>Yearly</option>
+                        </select>
+                    </label>
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <label class="block md:col-span-2">
+                        <span class="text-sm">Preferred payment method</span>
+                        <select name="paymentMethod" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm">
+                            <option>Card</option>
+                            <option>Bank transfer</option>
+                            <option>Mobile money</option>
+                            <option>Cash</option>
+                        </select>
+                    </label>
+
+
+                    <label class="block">
+                        <span class="text-sm">Preferred cause</span>
+                        <select name="cause" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm">
+                            <option>General fund</option>
+                            <option>Education</option>
+                            <option>Health</option>
+                            <option>Orphan care</option>
+                            <option>Environment</option>
+                        </select>
+                    </label>
+                </div>
+
+
+                <label class="block">
+                    <span class="text-sm">Message or instructions (optional)</span>
+                    <textarea name="message" rows="3" class="mt-1 block w-full rounded-lg border-gray-200 shadow-sm"
+                        placeholder="If you'd like your donation to be used for a specific program, say so here."></textarea>
+                </label>
+            </fieldset>
+
+            <button id="submitBtn"
+                class="px-4 py-2 bg-red-600 text-white rounded w-full flex items-center justify-center gap-2 uppercase font-medium hover:bg-red-700 transition-all duration-300">
+                <span id="btnText">Register</span>
+                <span id="spinner"
+                    class="hidden animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
+            </button>
+
+             <!-- Success Message -->
+          <div id="successPopup" class="hidden p-4 mt-4 bg-green-600 text-white rounded-lg">
+            Message sent successfully! Thank you for contacting us.
+          </div>
+        
+          <!-- Error Message -->
+          <div id="errorPopup" class="hidden p-4 mt-4 bg-red-600 text-white rounded-lg">
+            Something went wrong. Please try again later.
+          </div>
+        </form>
+
+    </main>
+
+     <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-8" >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-6">
+      <div>
+        <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation Logo" class="w-16 h-16 mb-2" />
+        <h5 class="font-bold">The Health Factor Foundation</h5>
+        <p class="text-sm text-gray-400 mt-2">P.O. Box - Accra • thehealthfactorfoundation@gmail.com • 0242348705</p>
+      </div>
+      <div class="text-sm">
+        <p class="font-semibold">Quick Links</p>
+        <ul class="mt-2 space-y-1 text-gray-400">
+          <li>About</li>
+          <li>Donate</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div class="text-sm">
+        <p class="font-semibold">Support</p>
+        <p class="mt-2 text-gray-400">MoMo: 0242348705 • CAL Bank: 1400003237976</p>
+      </div>
+    </div>
+    <div class="mt-12 text-center text-gray-500 text-xs">© 2025 The Health Factor Foundation — All rights reserved.</div>
+  </footer>
+    
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+<script>
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const btnText = document.getElementById("btnText");
+    const spinner = document.getElementById("spinner");
+    const successPopup = document.getElementById("successPopup");
+    const errorPopup = document.getElementById("errorPopup");
+    
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+    
+      // Disable button + show spinner
+      submitBtn.disabled = true;
+      btnText.textContent = "Registering...";
+      spinner.classList.remove("hidden");
+    
+      const formData = new FormData(form);
+    
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+    
+        const data = await res.json();
+    
+        if (data.success) {
+          successPopup.classList.remove("hidden");
+          errorPopup.classList.add("hidden");
+          form.reset();
+    
+          // Optional redirect after 3 seconds
+          setTimeout(() => {
+            window.location.href = "thank-you.html"; // <- change to your thank-you page
+          }, 3000);
+    
+        } else {
+          errorPopup.classList.remove("hidden");
+          successPopup.classList.add("hidden");
+        }
+    
+      } catch (error) {
+        errorPopup.classList.remove("hidden");
+        successPopup.classList.add("hidden");
+      }
+    
+      // Reset button
+      btnText.textContent = "Send Message";
+      spinner.classList.add("hidden");
+      submitBtn.disabled = false;
+    });
+    </script>
+</body>
+
+</html>
