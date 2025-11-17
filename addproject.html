@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Health Factor Foundation - Add Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="shortcut icon" href="/images/Health Factor LOGO.png" type="image/x-icon">
+</head>
+<body>
+    <header class="bg-white shadow fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                
+                <!-- Logo + Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12">
+                        <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation">
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-semibold">The Health Factor Foundation</h1>
+                        <p class="text-xs text-gray-500">Bringing Health and Hope to Every Community</p>
+                    </div>
+                </div>
+    
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="/index.html" class="hover:text-red-600">Home</a>
+    
+                    <!-- Desktop User Image -->
+                    <img id="nav-user-picture" 
+                         class="w-10 h-10 rounded-full object-cover border shadow hidden" />
+                </div>
+    
+                <!-- Mobile User Image + Menu -->
+                <div class="flex items-center gap-3 md:hidden">
+                    <img id="mobile-user-picture"
+                         class="w-10 h-10 rounded-full object-cover border shadow hidden" />
+                    <button id="menu-btn" class="p-2 rounded bg-gray-100">☰</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+            <nav class="flex flex-col p-4 space-y-2 text-sm">
+                <a href="/index.html" class="hover:text-red-600">Home</a>
+            </nav>
+        </div>
+    </header>
+    
+    
+    
+
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+<script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        window.location.href = "/googleauth.html";
+    } else {
+        // Desktop navbar user image
+        const desktopPic = document.getElementById("nav-user-picture");
+        desktopPic.src = user.picture;
+        desktopPic.classList.remove("hidden");
+
+        // Mobile navbar user image
+        const mobilePic = document.getElementById("mobile-user-picture");
+        mobilePic.src = user.picture;
+        mobilePic.classList.remove("hidden");
+    }
+</script>
+
+
+
+</body>
+</html>

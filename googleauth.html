@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Health Factor Foundation - Authentication Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="shortcut icon" href="/images/Health Factor LOGO.png" type="image/x-icon">
+
+
+
+    <!-- Google Identity Service -->
+
+</head>
+
+<body>
+
+    <section class="bg-gray-100 flex items-center justify-center h-screen">
+        <header class="bg-white shadow fixed w-full top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded flex items-center justify-center text-white font-bold"><img
+                                src="/images/Health Factor LOGO.png" alt="Health Factor Foundation"></div>
+                        <div>
+                            <h1 class="text-lg font-semibold">The Health Factor Foundation</h1>
+                            <p class="text-xs text-gray-500">Bringing Health and Hope to Every Community</p>
+                        </div>
+                    </div>
+
+                    <nav id="navbar" class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+
+                        <a href="/index.html" class="hover:text-red-600">Home</a>
+                    </nav>
+
+
+                    <button id="menu-btn" class="md:hidden p-2 rounded bg-gray-100">☰</button>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+
+                <nav class="flex flex-col p-4 space-y-2 text-sm">
+                    <a href="/index.html" class="hover:text-red-600">Home</a>
+
+                </nav>
+
+            </div>
+        </header>
+
+
+
+
+        <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md text-center">
+
+            <div>
+                <div class="flex justify-center mb-6">
+                    <img src="/images/Health Factor LOGO.png" class="w-24 h-24 object-contain"
+                        alt="Health Factor Foundation Logo">
+                </div>
+                <p class="text-gray-500 mb-6">Welcome to the Health Factor Foundation!</p>
+            </div>
+
+            <h1 class="text-3xl font-bold text-gray-800 mb-4">Sign In</h1>
+            <p class="text-gray-500 mb-6">Sign in with your Google account</p>
+
+            <!-- Google Sign-In -->
+            <div id="g_id_onload"
+                data-client_id="556527415074-3u6v6d0d6vqodber7saimqu7eg21n2sn.apps.googleusercontent.com"
+                data-callback="handleLogin" data-auto_prompt="false">
+            </div>
+
+            <div class="flex justify-center">
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="signin"
+                    data-shape="rectangular">
+                </div>
+            </div>
+
+            <!-- User Info -->
+            <div id="user-box" class="hidden mt-8">
+                <img id="user-img" class="w-20 h-20 rounded-full mx-auto mb-3 shadow" />
+                <h2 id="user-name" class="text-xl font-bold text-gray-800"></h2>
+                <p id="user-email" class="text-gray-600"></p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-6">
+            <div>
+                <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation Logo" class="w-16 h-16 mb-2" />
+                <h5 class="font-bold">The Health Factor Foundation</h5>
+                <p class="text-sm text-gray-400 mt-2">P.O. Box - Accra • thehealthfactorfoundation@gmail.com •
+                    0242348705</p>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Quick Links</p>
+                <ul class="mt-2 space-y-1 text-gray-400">
+                    <li>About</li>
+                    <li>Donate</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Support</p>
+                <p class="mt-2 text-gray-400">MoMo: 0242348705 • CAL Bank: 1400003237976</p>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-gray-500 text-xs">© 2025 The Health Factor Foundation — All rights reserved.
+        </div>
+    </footer>
+
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <script>
+        function handleLogin(response) {
+            // JWT token from Google
+            const token = response.credential;
+
+            // Decode token (client-side)
+            const userData = JSON.parse(atob(token.split(".")[1]));
+
+            document.getElementById("user-box").classList.remove("hidden");
+
+            document.getElementById("user-img").src = userData.picture;
+            document.getElementById("user-name").innerText = userData.name;
+            document.getElementById("user-email").innerText = userData.email;
+
+            console.log("User Data:", userData);
+
+            // Save user data locally so next page can use it
+            localStorage.setItem("user", JSON.stringify({
+                name: userData.name,
+                email: userData.email,
+                picture: userData.picture
+            }));
+
+            // Redirect to dashboard/addproject page
+            window.location.href = "/addproject.php";
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>

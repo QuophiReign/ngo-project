@@ -10,6 +10,12 @@
     <link rel="shortcut icon" href="/images/Health Factor LOGO.png" type="image/x-icon">
 </head>
 
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
 <body>
 
     <header class="bg-white shadow fixed w-full top-0 z-50">
@@ -44,7 +50,7 @@
         </div>
     </header>
 
-    <section class="pt-24 pb-12 bg-red-50 ">
+    <section class="pt-24 pb-12 bg-red-50 " data-aos="fade-down">
         <div class="max-w-3xl mx-auto px-4 text-center mt-4">
             <h2 class="text-3xl font-extrabold mb-4 text-gray-800">Become a Donor</h2>
             <p class="text-gray-600 mb-8 font-semibold">Join us in making a difference! Your generous donation helps us
@@ -53,15 +59,15 @@
         </div>
     </section>
 
-    <main class="min-h-screen flex items-center justify-center p-6 -mt-20">
-        <form  id="contactForm" action="https://api.web3forms.com/submit" method="POST"
+    <main class="min-h-screen flex items-center justify-center p-6 bg-red-50" data-aos="fade-up">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST"
             class="form-card w-full bg-white rounded-2xl shadow-lg p-8 grid gap-6 grid-cols-1 md:grid-cols-2"
             novalidate>
 
 
             <!-- REQUIRED Web3Forms Access Key -->
             <input type="hidden" name="access_key" value="bac4b01c-0f85-4e78-bb8a-ab816f888eb0">
-        
+
             <!-- Optional Subject -->
             <input type="hidden" name="subject" value="New Contact Message">
 
@@ -208,43 +214,47 @@
                     class="hidden animate-spin border-2 border-white border-t-transparent rounded-full w-4 h-4"></span>
             </button>
 
-             <!-- Success Message -->
-          <div id="successPopup" class="hidden p-4 mt-4 bg-green-600 text-white rounded-lg">
-            Message sent successfully! Thank you for contacting us.
-          </div>
-        
-          <!-- Error Message -->
-          <div id="errorPopup" class="hidden p-4 mt-4 bg-red-600 text-white rounded-lg">
-            Something went wrong. Please try again later.
-          </div>
+            <!-- Success Message -->
+            <div id="successPopup" class="hidden p-4 mt-4 bg-green-600 text-white rounded-lg">
+                Message sent successfully! Thank you for contacting us.
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorPopup" class="hidden p-4 mt-4 bg-red-600 text-white rounded-lg">
+                Something went wrong. Please try again later.
+            </div>
         </form>
 
     </main>
 
-     <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-8" >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-6">
-      <div>
-        <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation Logo" class="w-16 h-16 mb-2" />
-        <h5 class="font-bold">The Health Factor Foundation</h5>
-        <p class="text-sm text-gray-400 mt-2">P.O. Box - Accra • thehealthfactorfoundation@gmail.com • 0242348705</p>
-      </div>
-      <div class="text-sm">
-        <p class="font-semibold">Quick Links</p>
-        <ul class="mt-2 space-y-1 text-gray-400">
-          <li>About</li>
-          <li>Donate</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div class="text-sm">
-        <p class="font-semibold">Support</p>
-        <p class="mt-2 text-gray-400">MoMo: 0242348705 • CAL Bank: 1400003237976</p>
-      </div>
-    </div>
-    <div class="mt-12 text-center text-gray-500 text-xs">© 2025 The Health Factor Foundation — All rights reserved.</div>
-  </footer>
-    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-6">
+            <div>
+                <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation Logo" class="w-16 h-16 mb-2" />
+                <h5 class="font-bold">The Health Factor Foundation</h5>
+                <p class="text-sm text-gray-400 mt-2">P.O. Box - Accra • thehealthfactorfoundation@gmail.com •
+                    0242348705</p>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Quick Links</p>
+                <ul class="mt-2 space-y-1 text-gray-400">
+                    <li>About</li>
+                    <li>Donate</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Support</p>
+                <p class="mt-2 text-gray-400">MoMo: 0242348705 • CAL Bank: 1400003237976</p>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-gray-500 text-xs">© 2025 The Health Factor Foundation — All rights reserved.
+        </div>
+    </footer>
+
+
+
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -254,57 +264,62 @@
         });
     </script>
 
-<script>
-    const form = document.getElementById("contactForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const btnText = document.getElementById("btnText");
-    const spinner = document.getElementById("spinner");
-    const successPopup = document.getElementById("successPopup");
-    const errorPopup = document.getElementById("errorPopup");
-    
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-    
-      // Disable button + show spinner
-      submitBtn.disabled = true;
-      btnText.textContent = "Registering...";
-      spinner.classList.remove("hidden");
-    
-      const formData = new FormData(form);
-    
-      try {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({ duration: 800, offset: 100 });
+
+        const form = document.getElementById("contactForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const btnText = document.getElementById("btnText");
+        const spinner = document.getElementById("spinner");
+        const successPopup = document.getElementById("successPopup");
+        const errorPopup = document.getElementById("errorPopup");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Disable button + show spinner
+            submitBtn.disabled = true;
+            btnText.textContent = "Registering...";
+            spinner.classList.remove("hidden");
+
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    successPopup.classList.remove("hidden");
+                    errorPopup.classList.add("hidden");
+                    form.reset();
+
+                    // Optional redirect after 3 seconds
+                    setTimeout(() => {
+                        window.location.href = "thank-you.html"; // <- change to your thank-you page
+                    }, 3000);
+
+                } else {
+                    errorPopup.classList.remove("hidden");
+                    successPopup.classList.add("hidden");
+                }
+
+            } catch (error) {
+                errorPopup.classList.remove("hidden");
+                successPopup.classList.add("hidden");
+            }
+
+            // Reset button
+            btnText.textContent = "Send Message";
+            spinner.classList.add("hidden");
+            submitBtn.disabled = false;
         });
-    
-        const data = await res.json();
-    
-        if (data.success) {
-          successPopup.classList.remove("hidden");
-          errorPopup.classList.add("hidden");
-          form.reset();
-    
-          // Optional redirect after 3 seconds
-          setTimeout(() => {
-            window.location.href = "thank-you.html"; // <- change to your thank-you page
-          }, 3000);
-    
-        } else {
-          errorPopup.classList.remove("hidden");
-          successPopup.classList.add("hidden");
-        }
-    
-      } catch (error) {
-        errorPopup.classList.remove("hidden");
-        successPopup.classList.add("hidden");
-      }
-    
-      // Reset button
-      btnText.textContent = "Send Message";
-      spinner.classList.add("hidden");
-      submitBtn.disabled = false;
-    });
     </script>
 </body>
 
