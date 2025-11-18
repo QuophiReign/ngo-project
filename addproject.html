@@ -50,8 +50,106 @@
         </div>
     </header>
     
+    <div class="max-w-xl mx-auto bg-white p-8 shadow-lg rounded-xl mt-24 mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Add New Project</h2>
     
+        <form action="#" method="POST" enctype="multipart/form-data" class="space-y-5">
     
+          <!-- Project Name -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-1">Project Name</label>
+            <input 
+              type="text" 
+              name="project_name" 
+              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              placeholder="Enter project name"
+              required
+            />
+          </div>
+    
+          <!-- Project Start Date -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-1">Project Start Date</label>
+            <input 
+              type="date" 
+              name="project_start" 
+              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+          </div>
+    
+          <!-- Project End Date -->
+          <div>
+            <label class="block text-gray-700 font-medium mb-1">Project End Date</label>
+            <input 
+              type="date" 
+              name="project_end" 
+              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              required
+            />
+          </div>
+
+           <!-- Project Description -->
+           <div>
+            <label class="block text-gray-700 font-medium mb-1">Project Description</label>
+            <textarea 
+              name="project_description" 
+              class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              required
+            ></textarea>
+          </div>
+    
+          <!-- Project Gallery -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Project Gallery (Multiple Files)</label>
+        <input 
+          type="file" 
+          id="galleryInput"
+          name="project_gallery[]" 
+          multiple 
+          accept="image/*"
+          class="w-full bg-gray-50 border px-4 py-2 rounded-lg cursor-pointer focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+      </div>
+
+      <!-- Preview Area -->
+      <div id="previewContainer" class="grid grid-cols-3 gap-3 mt-3"></div>
+    
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full bg-red-600 text-white py-3 rounded-xl text-lg font-semibold hover:bg-blue-700 transition">
+            Submit Project
+          </button>
+    
+        </form>
+      </div>
+    
+      <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-6">
+            <div>
+                <img src="/images/Health Factor LOGO.png" alt="Health Factor Foundation Logo" class="w-16 h-16 mb-2" />
+                <h5 class="font-bold">The Health Factor Foundation</h5>
+                <p class="text-sm text-gray-400 mt-2">P.O. Box - Accra • thehealthfactorfoundation@gmail.com •
+                    0242348705</p>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Quick Links</p>
+                <ul class="mt-2 space-y-1 text-gray-400">
+                    <li>About</li>
+                    <li>Donate</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="text-sm">
+                <p class="font-semibold">Support</p>
+                <p class="mt-2 text-gray-400">MoMo: 0242348705 • CAL Bank: 1400003237976</p>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-gray-500 text-xs">© 2025 The Health Factor Foundation — All rights reserved.
+        </div>
+    </footer>
 
 
     <script>
@@ -81,6 +179,64 @@
     }
 </script>
 
+<!-- IMAGE PREVIEW + DELETE SCRIPT -->
+<script>
+    const galleryInput = document.getElementById("galleryInput");
+    const previewContainer = document.getElementById("previewContainer");
+
+    let selectedFiles = [];
+
+    // When files are selected
+    galleryInput.addEventListener("change", function () {
+      selectedFiles = Array.from(this.files);
+      updatePreview();
+    });
+
+    // Update preview list
+    function updatePreview() {
+      previewContainer.innerHTML = "";
+
+      selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          // Wrapper
+          const wrapper = document.createElement("div");
+          wrapper.className = "relative";
+
+          // Image
+          const img = document.createElement("img");
+          img.src = e.target.result;
+          img.className = "w-full h-28 object-cover rounded-lg shadow";
+
+          // Delete btn
+          const btn = document.createElement("button");
+          btn.innerHTML = "✕";
+          btn.className = 
+            "absolute top-1 right-1 bg-red-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm shadow hover:bg-red-700";
+          
+          btn.addEventListener("click", function () {
+            selectedFiles.splice(index, 1);
+            updateInputFiles();
+            updatePreview();
+          });
+
+          wrapper.appendChild(img);
+          wrapper.appendChild(btn);
+          previewContainer.appendChild(wrapper);
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Update actual input files list
+    function updateInputFiles() {
+      const dataTransfer = new DataTransfer();
+      selectedFiles.forEach(file => dataTransfer.items.add(file));
+      galleryInput.files = dataTransfer.files;
+    }
+  </script>
 
 
 </body>
